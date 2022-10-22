@@ -1,0 +1,7 @@
+header
+{
+    position: fixed;
+    background-color: rgba(180,180,180,0.85);
+    width:100%;
+    border-color:  rgba(180,180,180,0.85);
+}
