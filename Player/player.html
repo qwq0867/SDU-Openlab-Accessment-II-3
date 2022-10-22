@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <head>
+        <title>OPOP Video Player</title>
+        <link id="myCSS" rel="stylesheet" href="src/PlayerStyle.css">
+        <script type="text/javascript" src="src/func.js"></script>
+    </head>
+    <body>
+        <div id="stage">
+            <h1 align="left" id="title">&nbsp;OPOP C(゜-゜)つロ 干杯~</h1>
+            <hr id="titleline">
+            <div id="playAndInfo">
+                <div class="videoPlayerBody" id="playerBody">
+
+                    <video id="player" controls controlsList="nofullscreen">
+                    <source id="videoSource">
+                    </video>
+                    <div class="videoPlayerControlArea">
+                        <input type="image" src="res/play.png" class="playerButtons" id="playBtn" onclick="playvideo()">
+                        <input type="image" src="res/pause.png" class="playerButtons" id="pauseBtn" style="display:none" onclick="pausevideo()">
+                        <input type="image" src="res/replay.png" class="playerButtons"id="reloadBtn" onclick="reloadvideo()">
+                        <p style="display:block; width: 8%;vertical-align:sub;" id="myvol">音量</p>
+                        <input type="range" id="Volume" style="width:10%;" max="1.00" min="0.00" step="0.05" oninput="chgVol(value)" onmouseleave="chgVolend()">
+                        <div style="float:right;margin-left: auto;">
+                            <input type="image" src="res/fullscreen.png" class="playerButtons" id="fullscnBtn" onclick="fullscreen()">
+                            <input type="image" src="res/fullscreen_cancel.png" class="playerButtons" id="fullscnCanBtn" onclick="fullscreencancel()" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div id="infoAndSettings">
+                    <div class="videoInfo">
+                        <h3 id="name">一个简单的播放器</h3>
+                        <span id="videoUpdateTime" style="color:darkgrey"></span>
+                        <span id="videoSize" style="color:darkgrey"></span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="videoSetting">
+                        <span style="color:rgb(136, 136, 136)"><font size="+1">播放器选项</font></span><br><br>
+                        暗色模式 <input type="image" src="res/switch-on.png" onclick="changetheme()" id="darkBtn" height="20" style="vertical-align:middle">
+                        <br><br>
+                        视频倍速<br>
+                        <div id="speedSelector">
+                            <input type="button" title="0.5x" value="0.5x" class="speedSelectorItem" onclick="chgSpd(0.5,this)">
+                            <input type="button" title="0.75x" value="0.75x" class="speedSelectorItem" onclick="chgSpd(0.75,this)">
+                            <input type="button" title="1.0x" value="1.0x" class="speedSelectorItem" id="norspd" onclick="chgSpd(1.0,this)">
+                            <input type="button" title="1.5x" value="1.5x" class="speedSelectorItem" onclick="chgSpd(1.5,this)">
+                            <input type="button" title="2.0x" value="2.0x" class="speedSelectorItem" onclick="chgSpd(2.0,this)">
+                            <input type="button" title="custom" value="自定义" class="speedSelectorItem" onclick="chgSpdMethod(1)">
+                            <input type="range" id="customSpd" min="0.25" value="1.0" max="4.0" step="0.25" style="width: 80%;display: none;" oninput="chgSpd2(value)"> 
+                            <span id="customSpdDisplay" style="display:none;vertical-align: top;">倍速</span>   
+                        </div>
+                        <br>
+                        画面亮度<br>
+                        <input type="range" id="bri" min="0.2" value="1.0" max="1.5" step="0.01" style="width: 80%;" oninput="chgBri(value,false)">
+                        <input type="button" class="buttons" style="vertical-align: top;" value="重置" onclick="chgBri(1.0,true)">
+                        <br>
+                        视频下载<br>
+                        <input type="button" class="buttons" value="点此下载此视频" onclick="downloadvideo()" height="15">
+                        <a id="down" style="display:none" download=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
