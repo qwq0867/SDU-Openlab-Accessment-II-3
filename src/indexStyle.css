@@ -5,3 +5,16 @@ header
     width:100%;
     border-color:  rgba(180,180,180,0.85);
 }
+body
+{
+    display: flex;
+}
+#pagehead
+{
+    position: absolute;
+    height:10%;
+    background-color: rgba(180,180,180,0);
+    width:100%;
+    border-color:  rgba(180,180,180,0);
+    display: contents;
+}

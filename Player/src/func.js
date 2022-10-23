@@ -17,6 +17,10 @@ window.onload=function()
     source=document.getElementById("videoSource");
     isPlaying=false;
     changetheme();
+    var playname=window.opener.document.getElementById("openVideoName").value;
+    source.src="../playlist/"+playname;
+    //file.value="../playlist/"+playname;
+    loadvideo(playname);
 }
 
 /////////////////////////////////////////////////////////////
@@ -35,21 +39,23 @@ function pausevideo()
     pauseBtn.style.display="none";
     playBtn.style.display="flex";
 }
-function loadvideo()
+function loadvideo(playname)
 {
     
     //player.src=file.files[0];
-    myurl=URL.createObjectURL(file.files[0]);
+    /*myurl=URL.createObjectURL(file.files[0]);
     source.src=myurl;
     document.getElementById("name").textContent=file.files[0].name;
     var myDate=new Date(file.files[0].lastModified);
+    */
+    document.getElementById("name").textContent=playname;
     Array.from(document.getElementsByClassName("speedSelectorItem")).forEach((element)=>
         {
             element.style.backgroundColor="#f1f2f3";
         })
     document.getElementById("norspd").style.backgroundColor="deepskyblue"
-    document.getElementById("videoUpdateTime").textContent="日期："+myDate.getFullYear()+"-"+myDate.getMonth()+"-"+myDate.getDay()+"  "+myDate.getHours()+":"+myDate.getMinutes();
-    document.getElementById("videoSize").textContent="文件大小："+(parseFloat(file.files[0].size)/(1024*1024)).toFixed(2)+"MB";
+    //document.getElementById("videoUpdateTime").textContent="日期："+myDate.getFullYear()+"-"+myDate.getMonth()+"-"+myDate.getDay()+"  "+myDate.getHours()+":"+myDate.getMinutes();
+    //document.getElementById("videoSize").textContent="文件大小："+(parseFloat(file.files[0].size)/(1024*1024)).toFixed(2)+"MB";
     player.load();
 }
 function changetheme()
@@ -134,7 +140,7 @@ function downloadvideo()
 {
     var downloadLink=document.getElementById("down");
     downloadLink.href=videoSource.src;
-    downloadLink.download=videoSource.src;
+    downloadLink.download=videoSource.src+".mp4";
     downloadLink.click();
 }
 function reloadvideo()
